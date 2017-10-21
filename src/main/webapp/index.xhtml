@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Adres Defteri</title>
+    </h:head>
+    <h:body>
+        <h:form >
+          
+            <h:inputText style="margin-left: 529px; margin-top: 50px; width: 180px" value="#{managedbean.ad_soyad}" >
+            </h:inputText>
+            <h:commandButton  style="width:100px" value="Bul"  actionListener="#{managedbean.adsoyad_ara()}" ></h:commandButton>
+               
+            
+           
+            
+            <h:dataTable border="2" style="margin: auto; margin-top: 85px; width: 25px" binding="#{table}" value="#{managedbean.verilerigetir()}" var="users" >
+              <h:column >
+                    <f:facet name="ID">ID</f:facet> 
+                    <h:outputText value="#{users.id}"></h:outputText>
+                      </h:column>
+            <h:column >
+                    <f:facet name="Name">Name</f:facet> 
+                    <h:outputText value="#{users.name}"></h:outputText>
+                      </h:column>
+                <h:column >
+                    <f:facet name="LastName">LastName</f:facet> 
+                    <h:outputText value="#{users.lastname}"></h:outputText>
+                      </h:column>
+               
+            <h:column >
+                <f:facet name="Mail"/>
+                    <h:outputText value="#{users.mail}"></h:outputText>
+                      </h:column>
+            
+            <h:column >
+                    <f:facet name="Address">Address</f:facet> 
+                    <h:outputText value="#{users.address}"></h:outputText>
+                      </h:column>
+                <h:column  >
+                    <f:facet name="Detay" />
+                    <h:commandButton value="Detay" actionListener="#{managedbean.detaysayfasi()}" action="detail.xhtml" >
+                        <f:param name="sendid" value="#{users.id}" />
+                        <f:param name="sendname" value="#{users.name}" />
+                        <f:param name="sendlastname" value="#{users.lastname}" />
+                        <f:param name="sendmail" value="#{users.mail}" />
+                        <f:param name="sendaddress" value="#{users.address}" />
+                    </h:commandButton>
+                </h:column>
+            </h:dataTable>
+         <h:commandButton value="Ekle" style="position: absolute; left: 603px; width: 150px;top: 275px;"  action="adduser.xhtml" ></h:commandButton>
+        
+        </h:form>
+    </h:body>
+</html>
+

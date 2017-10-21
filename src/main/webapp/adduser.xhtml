@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Adres Defteri</title>
+    </h:head>
+    <h:body>
+        <h:form >
+            <!-- <h:dataTable binding="" /> -->
+            <h:panelGrid columns="3" border="2" style="margin:auto">
+                Adı:
+                <h:inputText id="ad" value="#{managedbean.ad}" required="True" validatorMessage="Bu alana sayı girilemez !" requiredMessage="Bu alan boş geçilemez !" >
+                    <f:validateRegex pattern="[a-zA-Z]+" />
+                </h:inputText>
+                <h:message for="ad" />
+                Soyadı:
+                <h:inputText id="soyad" value="#{managedbean.soyad}" required="True" validatorMessage="Bu alana sayı girilemez !" requiredMessage="Bu alan boş geçilemez !" >
+                 <f:validateRegex pattern="[a-zA-Z]+" />
+                </h:inputText>
+                <h:message for="soyad" />
+                E-Posta:
+                <h:inputText id="mail" value="#{managedbean.mail}" required="True" validatorMessage="E-Posta adresi formatı yanlış !" requiredMessage="Bu alan boş geçilemez !"  >
+                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                </h:inputText>
+                 <h:message for="mail" />
+                 Adres:
+                <h:inputTextarea id="adres" value="#{managedbean.adres}" required="True" requiredMessage="Bu alan boş geçilemez !" />
+                <h:message for="adres" />
+                <h:commandButton value="Gönder" type="submit" actionListener="#{managedbean.yenikayit(managedbean)}"/>
+                <h:commandButton value="Anasayfa" action="index.xhtml"/>
+                  
+            </h:panelGrid>
+        </h:form>
+        
+        
+    </h:body>
+</html>
+
