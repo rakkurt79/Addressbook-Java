@@ -151,25 +151,22 @@ public class Database_islemleri {
     
     //Telefon Silme methodu
     public static String telefonsilme(int id){
-       Telephone sil =em.find(Telephone.class, id);
-       em.remove(sil);
-        
-      return "Kayıt silindi";
-   
-            }
+      
+     Telephone sil =em.find(Telephone.class,id);
+        try{
+         trans.begin();
+          em.remove(sil);
+          trans.commit();
+          return "Kayıt Silindi";
+       }catch(Exception ex){
+       trans.rollback();
+       return "Hata oluştu:"+ex;
+       }
+
+    } 
     
             
-     //  Telephone sil =em.find(Telephone.class,id);
-//        try{
-//         trans.begin();
-//          em.remove(sil);
-//          trans.commit();
-//          return "";
-//       }catch(Exception ex){
-//       trans.rollback();
-//       return "Hata oluştu:"+ex;
-//       }
-//       }
+     
     
 
     
